@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>#BasBhiKar - Abhi bas nahi hua | Nand Ghar</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1;700&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --dark-bg: #0a0a0a; --dark-card: #0d1b2a; --blue: #1b4f8a;
+            --green: #2e8b57; --gold: #c8960c; --white: #f9faf8;
+            --glass: rgba(255,255,255,0.05);
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'DM Sans', sans-serif; 
+            background: var(--dark-bg); 
+            color: var(--white); 
+            overflow-x: hidden; 
+            line-height: 1.6; 
+        }
+        
+        .hero {
+            height: 100vh; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; text-align: center;
+            padding: 0 2rem; position: relative;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+                        url('https://nandghar.org/wp-content/uploads/2023/04/nand-ghar-hero.jpg') center/cover;
+        }
+        
+        .logo {
+            position: absolute; top: 30px; left: 50%; transform: translateX(-50%);
+            width: 180px; height: auto; opacity: 0.9;
+        }
+        
+        .main-title {
+            font-family: 'Playfair Display', serif; font-size: clamp(5rem, 15vw, 10rem);
+            font-weight: 700; line-height: 0.9; margin-bottom: 1rem;
+            letter-spacing: -0.03em; text-shadow: 0 4px 20px rgba(0,0,0,0.8);
+        }
+        
+        .main-title em { color: var(--gold); }
+        
+        .question {
+            font-size: clamp(1.4rem, 3.5vw, 2.5rem); font-weight: 300;
+            margin: 2rem 0 3rem; opacity: 0.95; max-width: 800px;
+        }
+        
+        .cta-hero {
+            background: linear-gradient(135deg, var(--green), #228b54);
+            color: var(--white); padding: 1.5rem 4rem; font-size: 1.3rem;
+            font-weight: 600; border: none; border-radius: 50px; cursor: pointer;
+            text-decoration: none; box-shadow: 0 20px 40px rgba(46,139,87,0.4);
+            transition: all 0.4s ease; display: inline-block;
+        }
+        
+        .cta-hero:hover { transform: translateY(-8px); box-shadow: 0 30px 60px rgba(46,139,87,0.6); }
+        
+        .section { padding: 120px 2rem; max-width: 1400px; margin: 0 auto; }
+        .section-title {
+            font-family: 'Playfair Display', serif; font-size: clamp(3rem, 8vw, 5rem);
+            text-align: center; margin-bottom: 4rem; line-height: 1;
+        }
+        
+        .insight-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem; margin-top: 3rem;
+        }
+        
+        .insight-card {
+            background: var(--glass); backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.1); border-radius: 24px;
+            padding: 2.5rem 2rem; transition: all 0.4s ease;
+            position: relative; overflow: hidden;
+        }
+        
+        .insight-card::before {
+            content: attr(data-age); position: absolute; top: -1rem; left: 2rem;
+            background: var(--blue); color: var(--white); padding: 0.5rem 1.2rem;
+            border-radius: 20px; font-size: 0.8rem; font-weight: 600;
+            letter-spacing: 0.1em; text-transform: uppercase;
+        }
+        
+        .insight-card:hover { transform: translateY(-12px); border-color: var(--green); }
+        .insight-quote { font-size: 1.3rem; font-weight: 500; margin-bottom: 0.8rem; }
+        .insight-context { font-size: 0.95rem; opacity: 0.8; font-style: italic; }
+        
+        .nand-ghar-hero {
+            background: linear-gradient(rgba(13,27,42,0.9), rgba(13,27,42,0.9)),
+                        url('https://nandghar.org/wp-content/uploads/2023/04/children-learning.jpg') center/cover;
+            height: 70vh; border-radius: 24px; display: flex; align-items: center;
+            justify-content: center; text-align: center; margin: 4rem 0;
+            position: relative;
+        }
+        
+        .nand-text {
+            background: rgba(255,255,255,0.1); backdrop-filter: blur(20px);
+            padding: 3rem 4rem; border-radius: 20px; border: 1px solid rgba(255,255,255,0.2);
+            max-width: 800px;
+        }
+        
+        .stats-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem; margin: 4rem 0;
+        }
+        
+        .stat-card { text-align: center; padding: 2rem; }
+        .stat-number {
+            font-family: 'Playfair Display', serif; font-size: clamp(3rem, 10vw, 5rem);
+            font-weight: 700; line-height: 1; display: block; margin-bottom: 1rem;
+        }
+        
+        .stat-1 .stat-number { color: #4a90d9; }
+        .stat-2 .stat-number { color: var(--green); }
+        .stat-3 .stat-number { color: var(--gold); }
+        
+        .final-cta {
+            background: linear-gradient(135deg, var(--blue) 0%, var(--green) 100%);
+            padding: 120px 2rem; text-align: center;
+        }
+        
+        .cta-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem; max-width: 1000px; margin: 3rem auto 0;
+        }
+        
+        .cta-card {
+            background: rgba(255,255,255,0.15); backdrop-filter: blur(20px);
+            border-radius: 20px; padding: 3rem 2rem; border: 1px solid rgba(255,255,255,0.3);
+            transition: all 0.3s ease; text-decoration: none; color: var(--white); display: block;
+        }
+        
+        .cta-card:hover { transform: scale(1.05); background: rgba(255,255,255,0.25); }
+        .cta-icon { font-size: 3rem; margin-bottom: 1rem; display: block; }
+        .cta-title { font-size: 1.5rem; font-weight: 600; margin-bottom: 0.5rem; }
+        
+        .footer {
+            background: var(--dark-card); padding: 3rem 2rem 2rem;
+            text-align: center; border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .insight-grid, .stats-grid, .cta-grid { grid-template-columns: 1fr; }
+            .main-title { font-size: 4rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero with Logo -->
+    <section class="hero">
+        <img src="https://nandghar.org/wp-content/uploads/2022/10/Nand-Ghar-Logo.png" alt="Nand Ghar" class="logo">
+        <h1 class="main-title">#Bas<em>BhiKar</em></h1>
+        <p class="question">
+            Close your eyes. Picture a hungry child in India.<br>
+            <strong>You pictured a boy. She was hungry too.</strong>
+        </p>
+        <a href="#cta" class="cta-hero">Watch The Film</a>
+    </section>
+    
+    <!-- Insights -->
+    <section class="section">
+        <h2 class="section-title">Society said it<br>quietly. Every day.</h2>
+        <div class="insight-grid">
+            <div class="insight-card" data-age="Childhood">
+                <div class="insight-quote">"Bas kar, zyada mat kha."</div>
+                <div class="insight-context">Dinner table. Every night.</div>
+            </div>
+            <div class="insight-card" data-age="School">
+                <div class="insight-quote">"Bas karo padhai."</div>
+                <div class="insight-context">Brother stays. She leaves.</div>
+            </div>
+            <div class="insight-card" data-age="Puberty">
+                <div class="insight-quote">"Bas, badi ho gayi."</div>
+                <div class="insight-context">Her world shrinks overnight.</div>
+            </div>
+            <div class="insight-card" data-age="Motherhood">
+                <div class="insight-quote">"Bas, thodi kamzori hai."</div>
+                <div class="insight-context">Her child is born malnourished.</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Nand Ghar Solution -->
+    <section class="section">
+        <h2 class="section-title" style="color: var(--green);">At Nand Ghar</h2>
+        <div class="nand-ghar-hero">
+            <div class="nand-text">
+                <h3 style="font-size: 2.5rem; margin-bottom: 1.5rem; font-family: 'Playfair Display';">
+                    Same plate. Same teacher. Same future.
+                </h3>
+                <p style="font-size: 1.3rem; opacity: 0.95;">
+                    <strong>This is the first place where nobody says "bas".</strong>
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Stats -->
+    <section class="section">
+        <h2 class="section-title">The Numbers Don't Lie</h2>
+        <div class="stats-grid">
+            <div class="stat-card stat-1">
+                <span class="stat-number">28%</span>
+                <div>Girls eat after men finish</div>
+            </div>
+            <div class="stat-card stat-2">
+                <span class="stat-number">55%</span>
+                <div>Women are anaemic</div>
+            </div>
+            <div class="stat-card stat-3">
+                <span class="stat-number">10,000+</span>
+                <div>Nand Ghars across India</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA -->
+    <section class="final-cta" id="cta">
+        <h2 class="section-title">Abhi bas nahi hua</h2>
+        <p style="font-size: 1.6rem; margin-bottom: 3rem; opacity: 0.95;">
+            She is not done yet.
+        </p>
+        <div class="cta-grid">
+            <a href="https://nandghar.org/find-nandghar/" class="cta-card">
+                <span class="cta-icon">🏠</span>
+                <div class="cta-title">Find Nand Ghar</div>
+                <div>Near you, this weekend</div>
+            </a>
+            <a href="https://nandghar.org/volunteer/" class="cta-card">
+                <span class="cta-icon">🤝</span>
+                <div class="cta-title">Volunteer</div>
+                <div>Join the movement</div>
+            </a>
+            <a href="https://nandghar.org/donate/" class="cta-card">
+                <span class="cta-icon">❤️</span>
+                <div class="cta-title">Contribute</div>
+                <div>Fund her future</div>
+            </a>
+        </div>
+    </section>
+    
+    <footer class="footer">
+        <div style="font-size: 1.3rem; margin-bottom: 1rem; color: var(--gold);">#BasBhiKar</div>
+        <p>Nand Ghar Movement | © 2026 Vedanta Limited</p>
+    </footer>
+</body>
+</html>
